@@ -1,0 +1,52 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        @await Html.PartialAsync("MetatagsPartial")
+        @await Html.PartialAsync("CssPartial")
+    </head>
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+            <div id="main">
+                <div class="inner">
+                    @RenderBody()
+                    <!-- Header -->
+                    @await Html.PartialAsync("HeaderPartial")
+
+                    <!-- Banner -->
+                    @await Html.PartialAsync("BannerPartial")
+
+                    <!-- Section One -->
+                    @await Html.PartialAsync("SectionOnePartial")
+
+                    <!-- Section Two-->
+                    @await Html.PartialAsync("SectionTwoPartial")
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div id="sidebar">
+                <div class="inner">
+
+                    <!-- Search -->
+                    @await Html.PartialAsync("SearchPartial")
+
+                    <!-- Menu -->
+                    @await Html.PartialAsync("MenuPartial")
+                    
+                    <!-- Section Thre -->
+                    @await Html.PartialAsync("SectionThreePartial")
+
+                    <!-- Section Four -->
+                    @await Html.PartialAsync("SectionFourPartial")
+
+                    <!-- Footer -->
+                    @await Html.PartialAsync("FooterPartial")
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
