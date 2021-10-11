@@ -7,11 +7,11 @@ using TarasDzivikPetProject.Domain.Repositories.Abstract;
 
 namespace TarasDzivikPetProject.Domain.Repositories.EntityFramework
 {
-    public class EFServiceItemRepository : IVehicleItemsRepository
+    public class EFVehicleItemsRepository : IVehicleItemsRepository
     {
         private readonly AppDbContext context;
 
-        public EFServiceItemRepository(AppDbContext context)
+        public EFVehicleItemsRepository(AppDbContext context)
         {
             this.context = context;
         }

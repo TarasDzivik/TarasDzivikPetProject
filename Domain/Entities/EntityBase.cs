@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TarasDzivikPetProject.Domain.Entities
 {
@@ -18,6 +19,7 @@ namespace TarasDzivikPetProject.Domain.Entities
         public virtual string Title { get; set; }
 
         [Display(Name = "Ціна тз")]
+        [Column(TypeName = "decimal(18,2)")]
         public virtual decimal Price { get; set; }
 
         [Display(Name = "Повний опис")]
