@@ -17,7 +17,6 @@ namespace TarasDzivikPetProject.Domain.Entities
         {
             Авто,
             Мотоцикл,
-            Скутер,
             Самокат,
             Велосипед,            
         }
