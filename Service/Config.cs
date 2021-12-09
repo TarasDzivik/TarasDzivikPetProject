@@ -3,7 +3,7 @@
     public class Config
     {
         // властивості відповідні до тих що в файлі appsettings.json
-
+        public static string Developer { get; set; }
         public static string ConnectionString { get; set; }
         public static string CompanyName { get; set; }
         public static string CompanyPhone { get; set; }
