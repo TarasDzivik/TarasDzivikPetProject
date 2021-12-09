@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TarasDzivikPetProject.Domain;
 
 namespace TarasDzivikPetProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211209133905__Initial_added_textFieldId")]
+    partial class _Initial_added_textFieldId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace TarasDzivikPetProject.Migrations
                         new
                         {
                             Id = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
-                            ConcurrencyStamp = "6b403d8e-fda2-4dc8-908e-f9ed9f770899",
+                            ConcurrencyStamp = "1539135e-1dc5-47c1-bec4-bdf5d5ccd470",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,13 +150,13 @@ namespace TarasDzivikPetProject.Migrations
                         {
                             Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0be53f35-d9eb-4bc2-9ac9-bcba9a192d25",
+                            ConcurrencyStamp = "516346d5-f0bb-4b3f-a81d-b37f9e0f4e1f",
                             Email = "t.dzivik@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "T.DZIVIK@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBWNoV+Bht1DgqJSTCDbu7Ufm2K7WE0zssCsiSWBpJ61BHm78vz9hFHjCwCSuKrEhA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPwJtm5hv4GW70NwZdrm51PvZSHtjN1u2/DnyGcFRKXJyBbFekYV6VObdAiemXlFIw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TarasDzivikPetProject.Migrations
 {
-    public partial class _initial : Migration
+    public partial class _Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,42 +47,64 @@ namespace TarasDzivikPetProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TextField",
+                name: "Customers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TitleImagePath = table.Column<string>(nullable: true),
-                    MetaTitle = table.Column<string>(nullable: true),
-                    MetaDiscription = table.Column<string>(nullable: true),
-                    MetaKeywords = table.Column<string>(nullable: true),
-                    DateAdded = table.Column<DateTime>(nullable: false),
-                    CodeWord = table.Column<string>(nullable: false),
-                    Title = table.Column<string>(nullable: true),
-                    Text = table.Column<string>(nullable: true)
+                    CustomerId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Імя = table.Column<string>(name: "Ім'я", maxLength: 20, nullable: false),
+                    Прізвище = table.Column<string>(maxLength: 20, nullable: false),
+                    Email = table.Column<string>(maxLength: 40, nullable: false),
+                    Phone = table.Column<string>(maxLength: 17, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TextField", x => x.Id);
+                    table.PrimaryKey("PK_Customers", x => x.CustomerId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ElementsBase",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    НазвасторінкиЗаголовок = table.Column<string>(name: "Назва сторінки (Заголовок)", maxLength: 300, nullable: true, defaultValue: "Інформаційна сторінка"),
+                    Вмістсторінки = table.Column<string>(name: "Вміст сторінки", nullable: true, defaultValue: "Сторінка наповнюється Адміністратором"),
+                    Subtitle = table.Column<string>(nullable: true),
+                    Титульнакартинка = table.Column<string>(name: "Титульна картинка", nullable: true),
+                    SEOМетатегTitle = table.Column<string>(name: "SEO Метатег Title", nullable: true),
+                    SEOМетатегDescription = table.Column<string>(name: "SEO Метатег Description", nullable: true),
+                    SEOМетатегKeywords = table.Column<string>(name: "SEO Метатег Keywords", nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    TextFieldId = table.Column<Guid>(nullable: true),
+                    CodeWord = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ElementsBase", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "VehicleItem",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    TitleImagePath = table.Column<string>(nullable: true),
-                    MetaTitle = table.Column<string>(nullable: true),
-                    MetaDiscription = table.Column<string>(nullable: true),
-                    MetaKeywords = table.Column<string>(nullable: true),
-                    DateAdded = table.Column<DateTime>(nullable: false),
-                    Title = table.Column<string>(nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Text = table.Column<string>(nullable: true)
+                    VehicleId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UrlКартинки = table.Column<string>(name: "Url Картинки", nullable: false),
+                    Типтранспортногозасобу = table.Column<string>(name: "Тип транспортного засобу", nullable: false),
+                    Видпалива = table.Column<string>(name: "Вид палива", nullable: false),
+                    Додано = table.Column<DateTime>(nullable: false),
+                    Заголовок = table.Column<string>(maxLength: 80, nullable: false),
+                    МаркаАвто = table.Column<string>(name: "Марка Авто", maxLength: 30, nullable: false),
+                    Пробіг = table.Column<int>(maxLength: 7, nullable: false),
+                    Цінав = table.Column<decimal>(name: "Ціна в $", type: "decimal(18, 2)", nullable: false),
+                    Описавто = table.Column<string>(name: "Опис авто", nullable: false),
+                    SEOМетатегTitle = table.Column<string>(name: "SEO Метатег Title", nullable: true),
+                    SEOМетатегDescription = table.Column<string>(name: "SEO Метатег Description", nullable: true),
+                    SEOМетатегKeywords = table.Column<string>(name: "SEO Метатег Keywords", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VehicleItem", x => x.Id);
+                    table.PrimaryKey("PK_VehicleItem", x => x.VehicleId);
                 });
 
             migrationBuilder.CreateTable(
@@ -194,21 +216,22 @@ namespace TarasDzivikPetProject.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "44546e06-8719-4ad8-b88a-f271ae9d6eab", "0c59401d-7a6d-4c6d-9cda-20e61e9fc39a", "admin", "ADMIN" });
+                values: new object[] { "44546e06-8719-4ad8-b88a-f271ae9d6eab", "5c060d38-c868-4223-b54d-ed4c62870c9f", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3b62472e-4f66-49fa-a20f-e7685b9565d8", 0, "58e6cf17-810f-4130-a7d4-733ef2511b06", "t.dzivik@gmail.com", true, false, null, "T.DZIVIK@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEKAWJd97wYwqzO5RVXhZ2N3r/nWsJTrxU/9yEtLjWLD4tDReOI/RyRMtvcuBxOak6g==", null, false, "", false, "admin" });
+                values: new object[] { "3b62472e-4f66-49fa-a20f-e7685b9565d8", 0, "6dd939c2-5b1a-484c-ab53-fd304a9f26ce", "t.dzivik@gmail.com", true, false, null, "T.DZIVIK@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAECh39HWu0+qOfiFALvVs8P4tX9PH36XYtlOXvWYUjty3do1YL60jKB+FYZo7ZpqOrg==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
-                table: "TextField",
-                columns: new[] { "Id", "CodeWord", "DateAdded", "MetaDiscription", "MetaKeywords", "MetaTitle", "Price", "Text", "Title", "TitleImagePath" },
+                table: "ElementsBase",
+                columns: new[] { "Id", "Discriminator", "SEO Метатег Description", "SEO Метатег Keywords", "SEO Метатег Title", "Subtitle", "Назва сторінки (Заголовок)", "Титульна картинка", "CodeWord", "TextFieldId" },
                 values: new object[,]
                 {
-                    { new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"), "PageIndex", new DateTime(2021, 10, 11, 11, 10, 34, 817, DateTimeKind.Utc).AddTicks(3645), null, null, null, 0m, "Контент додає Адміністратор", "Main", null },
-                    { new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"), "Cars", new DateTime(2021, 10, 11, 11, 10, 34, 817, DateTimeKind.Utc).AddTicks(5315), null, null, null, 0m, "Контент додає Адміністратор", "Авто", null },
-                    { new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"), "Bikes", new DateTime(2021, 10, 11, 11, 10, 34, 817, DateTimeKind.Utc).AddTicks(5379), null, null, null, 0m, "Контент додає Адміністратор", "Мото", null }
+                    { new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"), "TextField", null, null, null, null, "Main", null, "PageIndex", new Guid("00000000-0000-0000-0000-000000000000") },
+                    { new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"), "TextField", null, null, null, null, "Buy page", null, "BuyVehicle", new Guid("00000000-0000-0000-0000-000000000000") },
+                    { new Guid("70bf163a-700a-4156-91c0-e83fce0a277f"), "TextField", null, null, null, null, "Rent page", null, "RentVehicle", new Guid("00000000-0000-0000-0000-000000000000") },
+                    { new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"), "TextField", null, null, null, null, "Loan Calculator", null, "LoanCalculator", new Guid("00000000-0000-0000-0000-000000000000") }
                 });
 
             migrationBuilder.InsertData(
@@ -274,7 +297,10 @@ namespace TarasDzivikPetProject.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "TextField");
+                name: "Customers");
+
+            migrationBuilder.DropTable(
+                name: "ElementsBase");
 
             migrationBuilder.DropTable(
                 name: "VehicleItem");

@@ -22,6 +22,7 @@ namespace TarasDzivikPetProject
         {
             Configuration.Bind("Project", new Config());
 
+            services.AddTransient<ICustomerRepository, EFCustomerRepository>();
             services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
             services.AddTransient<IVehicleItemsRepository, EFVehicleItemsRepository>();
             services.AddTransient<DataManager>();

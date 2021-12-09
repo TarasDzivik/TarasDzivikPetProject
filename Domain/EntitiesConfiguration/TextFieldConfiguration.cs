@@ -9,7 +9,7 @@ namespace TarasDzivikPetProject.Domain.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<TextField> builder)
         {
-            builder.HasKey(t => t.TextFieldId);
+            //builder.HasKey(t => t.TextFieldId);
 
             builder.Property(t => t.TextFieldId)
                 .ValueGeneratedOnAdd();

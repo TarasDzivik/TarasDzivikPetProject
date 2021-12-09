@@ -16,7 +16,7 @@ namespace TarasDzivikPetProject.Areas.Admin.Controllers
         // Тут ми передаємо наше кодове слово, шукаємо його в БД і передаємо його у View
         public IActionResult Edit(string codeword)
         {
-            var entity = dataManager.TextFields.GetTextFieldByCodeWord(codeword); // З цим потім розберусь
+            var entity = dataManager.TextFields.GetTextFieldByCodeWord(codeword);
             return View(entity);
         }
 
