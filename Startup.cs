@@ -1,20 +1,15 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using TarasDzivikPetProject.Service;
+using TarasDzivikPetProject.Domain;
 using TarasDzivikPetProject.Domain.Repositories.Abstract;
 using TarasDzivikPetProject.Domain.Repositories.EntityFramework;
-using TarasDzivikPetProject.Domain;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 
 namespace TarasDzivikPetProject
 {
@@ -52,8 +47,17 @@ namespace TarasDzivikPetProject
                 options.SlidingExpiration = true;
             });
 
-
-            services.AddControllersWithViews()
+            services.AddAuthorization(x =>
+            {
+                x.AddPolicy("AdminArea", policy =>
+                {
+                    policy.RequireRole("admin");
+                });
+            });
+            services.AddControllersWithViews(x =>
+                {
+                    x.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
+                })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
         }
 
@@ -73,6 +77,7 @@ namespace TarasDzivikPetProject
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("admin", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }

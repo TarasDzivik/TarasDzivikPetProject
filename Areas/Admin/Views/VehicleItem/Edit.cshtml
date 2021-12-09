@@ -1,0 +1,87 @@
+﻿@model VehicleItem
+@{
+    string strTitle = "Редактировать запись";
+    ViewBag.Title = strTitle;
+}
+
+<script src="~/js/ckeditor/ckeditor.js"></script>
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="VehicleId" />
+            <input type="hidden" asp-for="DateAdded" />
+            <input type="hidden" asp-for="TitleImagePath" />
+
+            <div asp-validation-summary="All"></div>
+            <div class="div-box">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Name"></label>
+                <textarea asp-for="Name"></textarea>
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Fuel"></label>
+                <textarea asp-for="Fuel"></textarea>
+                <span asp-validation-for="Fuel"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="vehicleType"></label>
+                <textarea asp-for="vehicleType"></textarea>
+                <span asp-validation-for="vehicleType"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Travelled"></label>
+                <textarea asp-for="Travelled"></textarea>
+                <span asp-validation-for="Travelled"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Price"></label>
+                <textarea asp-for="Price"></textarea>
+                <span asp-validation-for="Price"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" />
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="TitleImagePath"></label>
+                <input type="file" name="titleImageFile" id="titleImageFile" />
+                <div>
+                    <img class="img-block" src="~/images/ @Model.TitleImagePath" />
+                </div>
+            </div>
+            <div class="div-box">
+                <label asp-for="MetaTitle"></label>
+                <input asp-for="MetaTitle" />
+                <span asp-validation-for="MetaTitle"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="MetaDescription"></label>
+                <input asp-for="MetaDescription" />
+                <span asp-validation-for="MetaDescription"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="MetaKaywords"></label>
+                <input asp-for="MetaKaywords" />
+                <span asp-validation-for="MetaKaywords"></span>
+            </div>
+            <input type="submit" value="Сохранить" />
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    window.onload = function() {
+        var newCKEdit = CKEDITOR.replace('@Html.IdFor(x=>x.Description)');
+        newCKEdit.updateElement();
+    }
+</script>
