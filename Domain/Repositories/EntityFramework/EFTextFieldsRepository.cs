@@ -17,22 +17,22 @@ namespace TarasDzivikPetProject.Domain.Repositories.EntityFramework
 
         public IQueryable<TextField> GetTextFields()
         {
-            return context.TextField;
+            return context.TestFields;
         }
 
         public TextField GetTextFieldById(Guid id)
         {
-            return context.TextField.FirstOrDefault(x => x.Id == id);
+            return context.TestFields.FirstOrDefault(x => x.TextFieldId == id);
         }
 
         public TextField GetTextFieldByCodeWord(string codeWord)
         {
-            return context.TextField.FirstOrDefault(x => x.CodeWord == codeWord);
+            return context.TestFields.FirstOrDefault(x => x.CodeWord == codeWord);
         }
 
         public void SaveTextField(TextField entity)
         {
-            if (entity.Id == default)
+            if (entity.TextFieldId == default)
             {
                 context.Entry(entity).State = EntityState.Added;
             }
@@ -44,7 +44,7 @@ namespace TarasDzivikPetProject.Domain.Repositories.EntityFramework
         }
         public void DeleteTextField(Guid id)
         {
-            context.TextField.Remove(new TextField() { Id = id });
+            context.TestFields.Remove(new TextField() { TextFieldId = id });
             context.SaveChanges();
         }
     }

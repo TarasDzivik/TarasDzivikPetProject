@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using TarasDzivikPetProject.Domain.Entities;
 
 namespace TarasDzivikPetProject.Domain.Repositories.Abstract
@@ -10,8 +6,10 @@ namespace TarasDzivikPetProject.Domain.Repositories.Abstract
     public interface IVehicleItemsRepository
     {
         IQueryable<VehicleItem> GetVehicleItem();
-        VehicleItem GetVehicleItemById(Guid id);
+        IOrderedEnumerable<VehicleItem> GetVehicleItemsByFuelType(string fuel);
+        IQueryable<VehicleItem> GetVehicleItemsByType(string type);
+        VehicleItem GetVehicleItemById(int id);
         void SaveVehicleItem(VehicleItem entity);
-        void DeleteVehicleItem(Guid id);
+        void DeleteVehicleItem(int id);
     }
 }

@@ -1,23 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TarasDzivikPetProject.Domain.Entities
 {
-    public class VehicleItem : EntityBase
+    public class VehicleItem
     {
-        [Required(ErrorMessage = "Заповніть назву транспортного засобу")]
-        [Display(Name = "Назва транспортного засобу")]
-        public override string Title { get; set; }
+        public enum FuelType
+        {
+            Бензин,
+            Дизель,
+            Гібрид,
+            Електро,
+            Газ
+        }
 
-        [Required(ErrorMessage = "Вкажіть ціну транспортного засобу")]
-        [Display(Name = "Ціна транспортного засобу")]
-        public override decimal Price { get; set; }
+        public enum VehicleType
+        {
+            Авто,
+            Мотоцикл,
+            Скутер,
+            Самокат,
+            Велосипед,            
+        }
 
-        [Display(Name = "Повний опис з характеристиками транспортного засобу")]
-        public override string Text { get; set; }
+        public int VehicleId { get; set; }
+        public string TitleImagePath { get; set; }
+        public VehicleType vehicleType { get; set; }
+        public FuelType Fuel { get; set; }
+
+        public DateTime DateAdded { get; set; }
+
+        public string Title { get; set; }
+        public string Name { get; set; }
+        public int Travelled { get; set; }
+        public decimal Price { get; set; }
+
+        public string Description { get; set; }
+
+        public string MetaTitle { get; set; }
+        public string MetaDescription { get; set; }
+        public string MetaKaywords { get; set; }
     }
 }

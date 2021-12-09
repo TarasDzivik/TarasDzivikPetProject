@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TarasDzivikPetProject.Domain.Entities
 {
-    public class TextField : EntityBase
+    public class TextField : ElementsBase
     {
-        [Required]
+        public Guid TextFieldId { get; set; }
+
         public string CodeWord { get; set; }
-
-        [Display(Name = "Назва сторінки (заголовок)")]
-        public override string Title { get; set; } = "Інформаційна сторінка";
-
-        [Display(Name = "Контент сторінки")]
-        public override string Text { get; set; } = "Контент додає Адміністратор";
+        public override string Title { get; set; }
+        public override string Text { get; set; }
     }
 }

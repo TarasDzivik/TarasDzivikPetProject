@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
-using TarasDzivikPetProject.Domain;
 using TarasDzivikPetProject.Domain.Entities;
 using TarasDzivikPetProject.Domain.Repositories.Abstract;
 
@@ -21,14 +19,14 @@ namespace TarasDzivikPetProject.Domain.Repositories.EntityFramework
             return context.VehicleItem;
         }
 
-        public VehicleItem GetVehicleItemById(Guid id)
+        public VehicleItem GetVehicleItemById(int id)
         {
-            return context.VehicleItem.FirstOrDefault(x => x.Id == id);
+            return context.VehicleItem.FirstOrDefault(x => x.VehicleId == id);
         }
 
         public void SaveVehicleItem(VehicleItem entity)
         {
-            if (entity.Id == default)
+            if (entity.VehicleId == default)
             {
                 context.Entry(entity).State = EntityState.Added;
             }
@@ -39,10 +37,27 @@ namespace TarasDzivikPetProject.Domain.Repositories.EntityFramework
             context.SaveChanges();
         }
 
-        public void DeleteVehicleItem(Guid id)
+        public void DeleteVehicleItem(int id)
         {
-            context.VehicleItem.Remove(new VehicleItem() { Id = id });
+            context.VehicleItem.Remove(new VehicleItem() { VehicleId = id });
             context.SaveChanges();
+        }
+
+        public VehicleItem GetLustVehicleItem(int id)
+        {
+            return context.VehicleItem
+                .OrderByDescending(x => x.DateAdded)
+                .FirstOrDefault(x => x.VehicleId == id);
+        }
+
+        public IOrderedEnumerable<VehicleItem> GetVehicleItemsByFuelType(string fuel)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IQueryable<VehicleItem> GetVehicleItemsByType(string type)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
