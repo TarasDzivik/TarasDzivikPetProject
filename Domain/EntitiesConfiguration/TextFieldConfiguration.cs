@@ -22,7 +22,7 @@ namespace TarasDzivikPetProject.Domain.EntitiesConfiguration
                 .HasDefaultValue("Інформаційна сторінка");
 
             builder.Property(t => t.Text)
-                .HasColumnName("Вміст сторінки")
+                .HasColumnName("Вміст сторінки") 
                 .HasDefaultValue("Сторінка наповнюється Адміністратором");
 
             builder.HasData(
@@ -35,20 +35,26 @@ namespace TarasDzivikPetProject.Domain.EntitiesConfiguration
                 new TextField
                 {
                     Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"),
-                    CodeWord = "BuyVehicle",
+                    CodeWord = "PageBuyVehicle",
                     Title = "Buy page"
                 },
                 new TextField
                 {
                     Id = new Guid("70bf163a-700a-4156-91c0-e83fce0a277f"),
-                    CodeWord = "RentVehicle",
+                    CodeWord = "PageRentVehicle",
                     Title = "Rent page"
                 },
                 new TextField 
                 {
                     Id = new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"),
-                    CodeWord = "LoanCalculator",
+                    CodeWord = "PageLoanCalculator",
                     Title = "Loan Calculator"
+                },
+                new TextField
+                {
+                    Id = new Guid("4aa76b4c-c59d-409a-84c1-06e6487a137a"),
+                    CodeWord = "PageContacts",
+                    Title = "Contacts"
                 });
         }
     }

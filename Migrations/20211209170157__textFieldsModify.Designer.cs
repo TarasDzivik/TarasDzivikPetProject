@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TarasDzivikPetProject.Domain;
 
 namespace TarasDzivikPetProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211209170157__textFieldsModify")]
+    partial class _textFieldsModify
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace TarasDzivikPetProject.Migrations
                         new
                         {
                             Id = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
-                            ConcurrencyStamp = "1d97e95c-21f1-481f-999b-a1ba330d50dc",
+                            ConcurrencyStamp = "a7ec824f-d205-41c1-8b3c-c0455cf0a497",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,13 +150,13 @@ namespace TarasDzivikPetProject.Migrations
                         {
                             Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5530a54f-e251-4f0d-b560-b9d2bf03e7e0",
+                            ConcurrencyStamp = "4cf9fdda-51c8-462d-b43b-3de83bff0b91",
                             Email = "t.dzivik@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "T.DZIVIK@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHTF+SPytVfwl0hXjZLMXlb6UDsZ4hVT5zfnSZ0tunP3+72NSoO+e8cZ1ZjTrwb5TQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBTrTIJGu56YOebU2FN4JVRJcosaW+IAMoaUwdaHR+B9GLfRlmg6p4m+1onWAWOBvQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -303,7 +305,7 @@ namespace TarasDzivikPetProject.Migrations
                         .HasColumnName("SEO Метатег Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MetaKeywords")
+                    b.Property<string>("MetaKaywords")
                         .HasColumnName("SEO Метатег Keywords")
                         .HasColumnType("nvarchar(max)");
 
@@ -349,8 +351,7 @@ namespace TarasDzivikPetProject.Migrations
                     b.Property<DateTime>("DateAdded")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Додано")
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -391,6 +392,7 @@ namespace TarasDzivikPetProject.Migrations
                         .HasMaxLength(80);
 
                     b.Property<string>("TitleImagePath")
+                        .IsRequired()
                         .HasColumnName("Url Картинки")
                         .HasColumnType("nvarchar(max)");
 

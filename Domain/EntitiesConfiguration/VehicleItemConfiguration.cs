@@ -14,8 +14,7 @@ namespace TarasDzivikPetProject.Domain.EntitiesConfiguration
                 .ValueGeneratedOnAdd();
 
             builder.Property(v => v.TitleImagePath)
-                .HasColumnName("Url Картинки")
-                .IsRequired();
+                .HasColumnName("Url Картинки");
            
             builder.Property(v=>v.vehicleType)
                 .HasColumnName("Тип транспортного засобу")
@@ -51,8 +50,7 @@ namespace TarasDzivikPetProject.Domain.EntitiesConfiguration
 
             builder.Property(v => v.DateAdded)
                 .HasColumnName("Додано")
-                .ValueGeneratedOnAdd()
-                .IsRequired();
+                .HasDefaultValueSql("GETDATE()");
 
             builder.Property(v => v.MetaTitle)
                 .HasColumnName("SEO Метатег Title");

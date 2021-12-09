@@ -1,0 +1,22 @@
+﻿@model VehicleItem
+@{ 
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKaywords;
+}
+
+<div>
+    <h2>
+        @Model.Title
+    </h2>
+    <h2>
+        @Model.Price
+    </h2>
+    <div>
+        <img class="img-block" src="~/images/VehicleImages/@Model.TitleImagePath"/>
+    </div>
+</div>
+
+<div>
+    @Html.Raw(Model.Description)
+</div>

@@ -25,14 +25,18 @@ namespace TarasDzivikPetProject.Domain.EntitiesConfiguration
 
             builder.Property(e => e.TitleImagePath)
                 .HasColumnName("Титульна картинка");
-            
+
+            builder.Property(e=>e.DateAdded)
+                .ValueGeneratedOnAdd();
+
+
             builder.Property(e => e.MetaTitle)
                 .HasColumnName("SEO Метатег Title");
 
             builder.Property(e => e.MetaDescription)
                 .HasColumnName("SEO Метатег Description");
 
-            builder.Property(e => e.MetaKaywords)
+            builder.Property(e => e.MetaKeywords)
                 .HasColumnName("SEO Метатег Keywords");
         }
     }

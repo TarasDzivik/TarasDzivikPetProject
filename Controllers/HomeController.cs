@@ -15,9 +15,23 @@ namespace TarasDzivikPetProject.Controllers
             return View(dataManager.TextFields.GetTextFieldByCodeWord("PageIndex"));
         }
 
+        public IActionResult BuyVehicle()
+        {
+            return View(dataManager.TextFields.GetTextFieldByCodeWord("BuyVehicle"));
+        }
+
+        public IActionResult RentVehicle()
+        {
+            return View(dataManager.TextFields.GetTextFieldByCodeWord("RentVehicle"));
+        }
+        public IActionResult LoanCalculator()
+        {
+            return View(dataManager.TextFields.GetTextFieldByCodeWord("LoanCalculator"));
+        }
+
         public IActionResult Contacts()
         {
-            return View(dataManager.TextFields.GetTextFieldByCodeWord("PageContacts"));
+            return View(dataManager.TextFields.GetTextFieldByCodeWord("Contacts"));
         }
     }
 }

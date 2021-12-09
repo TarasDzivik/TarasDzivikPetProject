@@ -1,5 +1,12 @@
-﻿<div>
-    <h1>
-        This is the main page
-    </h1>
+﻿@model TextField
+@{
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+}
+
+<div>
+    @* В блоці нижче ми виводимо за допомогою РАВ (на пряму),
+        вміст нашого об'єкта "Вміст сторінки" з файла Domain/Entities/TextField.cs *@
+    @Html.Raw(Model.Text)
 </div>

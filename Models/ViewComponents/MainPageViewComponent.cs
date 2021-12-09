@@ -4,17 +4,19 @@ using TarasDzivikPetProject.Domain;
 
 namespace TarasDzivikPetProject.Models.ViewComponents
 {
-    public class SidebarViewComponent : ViewComponent
+    public class MainPageViewComponent : ViewComponent
     {
         private readonly DataManager dataManager;
-        public SidebarViewComponent(DataManager dataManager)
+        public MainPageViewComponent(DataManager dataManager)
         {
             this.dataManager = dataManager;
         }
 
         public Task<IViewComponentResult> InvokeAsync()
         {
-            return Task.FromResult((IViewComponentResult)View("Default", dataManager.VehicleItems.GetVehicleItem()));
+            return Task.FromResult((IViewComponentResult)
+                View("Default", dataManager.VehicleItems.GetVehicleItem()));
+            // замінити GetVehicleItem() на GetVehicleItemByType()
         }
     }
 }

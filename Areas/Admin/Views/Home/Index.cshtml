@@ -7,9 +7,9 @@
 <div>
     <h2>@strTitle</h2>
     <div>
-        <h3>Мої послуги</h3>
+        <h3>Весь транспорт</h3>
         <div class="div-box">
-            <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="">Добавити послугу</a>
+            <a asp-area="Admin" asp-controller="VehicleItem" asp-action="Edit" asp-route-id="">Добавити транспорт</a>
         </div>
         <div>
             @if (Model.Any())
@@ -18,14 +18,14 @@
                     @foreach (VehicleItem entity in Model)
                     {
                         <div>
-                            <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="@entity.VehicleId">Редагувати</a>
+                            <a asp-area="Admin" asp-controller="VehicleItem" asp-action="Edit" asp-route-id="@entity.VehicleId">Редагувати</a>
                             |
-                            <form style="display: inline-block" id="from-@entity.VehicleId" asp-area="Admin" asp-controller="ServiceItems" asp-action="Delete" method="post">
+                            <form style="display: inline-block" id="from-@entity.VehicleId" asp-area="Admin" asp-controller="VehicleItem" asp-action="Delete" method="post">
                                 <input type="hidden" name="id" value="@entity.VehicleId"/>
                                 <a href="#" onclick="document.getElementById('from-@entity.VehicleId').submit()">Видалити</a>
                             </form>
                             |
-                            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.VehicleId">
+                            <a asp-area="" asp-controller="Vehicle" asp-action="Index" asp-route-id="@entity.VehicleId">
                                 @($"{entity.Title}")
                             </a>
                         </div>
@@ -36,7 +36,7 @@
         <div class="div-box">
             <h3>Редагувати сторінку сайту</h3>
             <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeword="PageIndex">Головна</a>
-            <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeword="PageServices">Мої послуги</a>
+            <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeword="PageVehicle">Транспорт</a>
             <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeword="PageContacts">Контакти</a>
         </div>
         <div class="div-box">

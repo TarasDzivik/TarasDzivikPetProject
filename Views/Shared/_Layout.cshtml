@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html>
     <head>
+        @await Html.PartialAsync("HeaderPartial")
         @await Html.PartialAsync("MetatagsPartial")
         @await Html.PartialAsync("CssPartial")
     </head>
@@ -14,7 +15,7 @@
                 <div class="inner">
                     @RenderBody()
                     <!-- Header -->
-                    @await Html.PartialAsync("HeaderPartial")
+                    @*@await Html.PartialAsync("HeaderPartial")*@
 
                     <!-- Banner -->
                     @await Html.PartialAsync("BannerPartial")
@@ -23,7 +24,7 @@
                     @await Html.PartialAsync("SectionOnePartial")
 
                     <!-- Section Two-->
-                    @await Html.PartialAsync("SectionTwoPartial")
+                    @*@await Html.PartialAsync("SectionTwoPartial")*@
                 </div>
             </div>
 
@@ -32,7 +33,7 @@
                 <div class="inner">
 
                     <!-- Search -->
-                    @await Html.PartialAsync("SearchPartial")
+                    @*@await Html.PartialAsync("SearchPartial")*@
 
                     <!-- Menu -->
                     @await Html.PartialAsync("MenuPartial")
@@ -41,7 +42,7 @@
                     @await Html.PartialAsync("SectionThreePartial")
 
                     <!-- Section Four -->
-                    @await Html.PartialAsync("SectionFourPartial")
+                    @*@await Html.PartialAsync("SectionFourPartial")*@
 
                     <!-- Footer -->
                     @await Html.PartialAsync("FooterPartial")

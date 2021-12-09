@@ -1,60 +1,60 @@
 ﻿@model VehicleItem
 @{
-    string strTitle = "Редактировать запись";
+    string strTitle = "Додати транспорт (Редактор)";
     ViewBag.Title = strTitle;
 }
-
-<script src="~/js/ckeditor/ckeditor.js"></script>
+@*едітор не працює, треба розібратись чого*@
+<script src="~/js/ckeditor5-build-classic/ckeditor.js"></script>
 
 <div>
     <h2>@strTitle</h2>
     <div>
-        <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <form asp-area="Admin" asp-controller="VehicleItem" asp-action="Edit" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="VehicleId" />
             <input type="hidden" asp-for="DateAdded" />
             <input type="hidden" asp-for="TitleImagePath" />
 
             <div asp-validation-summary="All"></div>
             <div class="div-box">
-                <label asp-for="Title"></label>
+                <label asp-for="Title">Заголовок</label>
                 <input asp-for="Title" />
                 <span asp-validation-for="Title"></span>
             </div>
             <div class="div-box">
-                <label asp-for="Name"></label>
-                <textarea asp-for="Name"></textarea>
-                <span asp-validation-for="Name"></span>
-            </div>
-            <div class="div-box">
-                <label asp-for="Fuel"></label>
-                <textarea asp-for="Fuel"></textarea>
-                <span asp-validation-for="Fuel"></span>
-            </div>
-            <div class="div-box">
-                <label asp-for="vehicleType"></label>
+                <label asp-for="vehicleType">Тип транспортного засобу</label>
                 <textarea asp-for="vehicleType"></textarea>
                 <span asp-validation-for="vehicleType"></span>
             </div>
             <div class="div-box">
-                <label asp-for="Travelled"></label>
+                <label asp-for="Name">Назва</label>
+                <textarea asp-for="Name"></textarea>
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Fuel">Вид палива</label>
+                <textarea asp-for="Fuel"></textarea>
+                <span asp-validation-for="Fuel"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Travelled">Пробіг</label>
                 <textarea asp-for="Travelled"></textarea>
                 <span asp-validation-for="Travelled"></span>
             </div>
             <div class="div-box">
-                <label asp-for="Price"></label>
+                <label asp-for="Price">Ціна</label>
                 <textarea asp-for="Price"></textarea>
                 <span asp-validation-for="Price"></span>
             </div>
             <div class="div-box">
-                <label asp-for="Description"></label>
+                <label asp-for="Description">Опис</label>
                 <input asp-for="Description" />
                 <span asp-validation-for="Description"></span>
             </div>
             <div class="div-box">
-                <label asp-for="TitleImagePath"></label>
+                <label asp-for="TitleImagePath">Титульна картинка</label>
                 <input type="file" name="titleImageFile" id="titleImageFile" />
                 <div>
-                    <img class="img-block" src="~/images/ @Model.TitleImagePath" />
+                    <img class="img-block" src="~/images/@Model.TitleImagePath" />
                 </div>
             </div>
             <div class="div-box">
@@ -77,11 +77,9 @@
     </div>
 </div>
 
-
-
 <script>
     window.onload = function() {
-        var newCKEdit = CKEDITOR.replace('@Html.IdFor(x=>x.Description)');
+        var newCKEdit = CKEDITOR.replace('@Html.IdFor(x=>x.Description  )');
         newCKEdit.updateElement();
     }
 </script>

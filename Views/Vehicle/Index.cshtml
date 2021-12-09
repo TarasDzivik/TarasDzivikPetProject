@@ -1,0 +1,26 @@
+﻿@model IQueryable<VehicleItem>
+@{
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.MetaTitle;
+    ViewBag.Description = textField.MetaDescription;
+    ViewBag.Keywords = textField.MetaKeywords;
+}
+
+<div>
+    @if (Model.Any())
+    {
+        <ul class="dig-image-list">
+            @foreach (VehicleItem entity in Model)
+            {
+                <li>
+                    <a asp-area="" asp-controller="Vehicle" asp-action="Index" asp-route-id="@entity.VehicleId">
+                        <img src="~/images/VehicleImages/@entity.TitleImagePath" alt="" class="left"/>
+                    </a>
+                    <h4>@entity.Title</h4>
+                    <p>@entity.Price</p>
+                </li>
+            }
+        </ul>
+    }
+</div>

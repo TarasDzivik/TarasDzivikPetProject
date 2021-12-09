@@ -12,7 +12,7 @@ namespace TarasDzivikPetProject.Areas.Admin.Controllers
     public class VehicleItemController : Controller
     {
         private readonly DataManager dataManager;
-        private readonly IWebHostEnvironment hostEnvironment;
+        private readonly IWebHostEnvironment hostEnvironment; // хостинг для зберігання титульних картинок
         public VehicleItemController(DataManager dataManager, IWebHostEnvironment hostEnvironment)
         {
             this.dataManager = dataManager;
@@ -27,21 +27,23 @@ namespace TarasDzivikPetProject.Areas.Admin.Controllers
 
         [Area("Admin")]
         [HttpPost]
-        public IActionResult Edit(VehicleItem model, IFormFile titleImageFile)
+        public IActionResult Edit(VehicleItem model, IFormFile titleImageFile) // вхідний файл не провіряється (не сек'юрно)
         {
             if (ModelState.IsValid)
             {
                 if (titleImageFile != null)
                 {
                     model.TitleImagePath = titleImageFile.FileName;
-                    using (var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/", titleImageFile.FileName),
+                    using (var stream = new FileStream(Path
+                        .Combine(hostEnvironment.WebRootPath, "images/VehicleImages/", titleImageFile.FileName),
                             FileMode.Create))
                     {
                         titleImageFile.CopyTo(stream);
                     }
                 }
                 dataManager.VehicleItems.SaveVehicleItem(model);
-                return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
+                return RedirectToAction(nameof(HomeController.Index),
+                    nameof(HomeController).CutController());
             }
             return View(model);
         }
@@ -50,7 +52,8 @@ namespace TarasDzivikPetProject.Areas.Admin.Controllers
         public IActionResult Delete(int id)
         {
             dataManager.VehicleItems.DeleteVehicleItem(id);
-            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
+            return RedirectToAction(nameof(HomeController.Index),
+                nameof(HomeController).CutController());
         }
     }
 }

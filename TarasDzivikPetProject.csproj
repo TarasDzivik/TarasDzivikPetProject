@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\images\VehicleTitleImage\" />
     <Folder Include="wwwroot\sass\" />
   </ItemGroup>
 
