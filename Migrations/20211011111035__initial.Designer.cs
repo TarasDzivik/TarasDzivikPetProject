@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TarasDzivikPetProject.Domain;
 
 namespace TarasDzivikPetProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211011111035__initial")]
+    partial class _initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace TarasDzivikPetProject.Migrations
                         new
                         {
                             Id = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
-                            ConcurrencyStamp = "5d98ec12-9fe2-4c82-bd7b-e068044c1905",
+                            ConcurrencyStamp = "0c59401d-7a6d-4c6d-9cda-20e61e9fc39a",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,13 +150,13 @@ namespace TarasDzivikPetProject.Migrations
                         {
                             Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8f3cb8c3-151f-4d2e-bbbd-5b916dc61e5e",
+                            ConcurrencyStamp = "58e6cf17-810f-4130-a7d4-733ef2511b06",
                             Email = "t.dzivik@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "T.DZIVIK@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHCFtJIa66sYQ8fubRYwxtsf0WqG2Q044p0iS1MYQ7/vikACsu5lj+PPZk2GlLevdA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKAWJd97wYwqzO5RVXhZ2N3r/nWsJTrxU/9yEtLjWLD4tDReOI/RyRMtvcuBxOak6g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -249,171 +251,108 @@ namespace TarasDzivikPetProject.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("TarasDzivikPetProject.Domain.Entities.ElementsBase", b =>
+            modelBuilder.Entity("TarasDzivikPetProject.Domain.Entities.TextField", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CodeWord")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MetaDiscription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaKeywords")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TextField");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"),
+                            CodeWord = "PageIndex",
+                            DateAdded = new DateTime(2021, 10, 11, 11, 10, 34, 817, DateTimeKind.Utc).AddTicks(3645),
+                            Price = 0m,
+                            Text = "Контент додає Адміністратор",
+                            Title = "Main"
+                        },
+                        new
+                        {
+                            Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"),
+                            CodeWord = "Cars",
+                            DateAdded = new DateTime(2021, 10, 11, 11, 10, 34, 817, DateTimeKind.Utc).AddTicks(5315),
+                            Price = 0m,
+                            Text = "Контент додає Адміністратор",
+                            Title = "Авто"
+                        },
+                        new
+                        {
+                            Id = new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"),
+                            CodeWord = "Bikes",
+                            DateAdded = new DateTime(2021, 10, 11, 11, 10, 34, 817, DateTimeKind.Utc).AddTicks(5379),
+                            Price = 0m,
+                            Text = "Контент додає Адміністратор",
+                            Title = "Мото"
+                        });
+                });
+
+            modelBuilder.Entity("TarasDzivikPetProject.Domain.Entities.VehicleItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateAdded")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MetaDescription")
-                        .HasColumnName("SEO Метатег Description")
+                    b.Property<string>("MetaDiscription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MetaKeywords")
-                        .HasColumnName("SEO Метатег Keywords")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MetaTitle")
-                        .HasColumnName("SEO Метатег Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Subtitle")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Text")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("Вміст сторінки")
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("Сторінка наповнюється Адміністратором");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("Назва сторінки (Заголовок)")
-                        .HasColumnType("nvarchar(300)")
-                        .HasMaxLength(300)
-                        .IsUnicode(true)
-                        .HasDefaultValue("Інформаційна сторінка");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TitleImagePath")
-                        .HasColumnName("Титульна картинка")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ElementsBase");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("ElementsBase");
-                });
-
-            modelBuilder.Entity("TarasDzivikPetProject.Domain.Entities.VehicleItem", b =>
-                {
-                    b.Property<int>("VehicleId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateAdded")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("Додано")
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnName("Опис авто")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Fuel")
-                        .HasColumnName("Вид палива")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnName("Марка Авто")
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.Property<decimal>("Price")
-                        .HasColumnName("Ціна в $")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnName("Заголовок")
-                        .HasColumnType("nvarchar(80)")
-                        .HasMaxLength(80);
-
-                    b.Property<string>("TitleImagePath")
-                        .HasColumnName("Url Картинки")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Travelled")
-                        .HasColumnName("Пробіг")
-                        .HasColumnType("int")
-                        .HasMaxLength(7);
-
-                    b.Property<string>("VehicleType")
-                        .HasColumnName("Тип транспортного засобу")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("VehicleId");
-
                     b.ToTable("VehicleItem");
-                });
-
-            modelBuilder.Entity("TarasDzivikPetProject.Domain.Entities.TextField", b =>
-                {
-                    b.HasBaseType("TarasDzivikPetProject.Domain.Entities.ElementsBase");
-
-                    b.Property<string>("CodeWord")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("TextFieldId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasDiscriminator().HasValue("TextField");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"),
-                            DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Main",
-                            CodeWord = "PageIndex",
-                            TextFieldId = new Guid("00000000-0000-0000-0000-000000000000")
-                        },
-                        new
-                        {
-                            Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"),
-                            DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Buy page",
-                            CodeWord = "PageBuyVehicle",
-                            TextFieldId = new Guid("00000000-0000-0000-0000-000000000000")
-                        },
-                        new
-                        {
-                            Id = new Guid("70bf163a-700a-4156-91c0-e83fce0a277f"),
-                            DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Rent page",
-                            CodeWord = "PageRentVehicle",
-                            TextFieldId = new Guid("00000000-0000-0000-0000-000000000000")
-                        },
-                        new
-                        {
-                            Id = new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"),
-                            DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Loan Calculator",
-                            CodeWord = "PageLoanCalculator",
-                            TextFieldId = new Guid("00000000-0000-0000-0000-000000000000")
-                        },
-                        new
-                        {
-                            Id = new Guid("4aa76b4c-c59d-409a-84c1-06e6487a137a"),
-                            DateAdded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Contacts",
-                            CodeWord = "PageContacts",
-                            TextFieldId = new Guid("00000000-0000-0000-0000-000000000000")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

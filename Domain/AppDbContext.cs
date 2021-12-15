@@ -12,8 +12,8 @@ namespace TarasDzivikPetProject.Domain
 
         public DbSet<TextField> TestFields { get; set; }
         public DbSet<VehicleItem> VehicleItem { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-
+        //public DbSet<Order> Orders { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

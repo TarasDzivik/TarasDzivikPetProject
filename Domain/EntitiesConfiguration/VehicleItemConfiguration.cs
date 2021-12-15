@@ -16,7 +16,7 @@ namespace TarasDzivikPetProject.Domain.EntitiesConfiguration
             builder.Property(v => v.TitleImagePath)
                 .HasColumnName("Url Картинки");
            
-            builder.Property(v=>v.vehicleType)
+            builder.Property(v=>v.VehicleType)
                 .HasColumnName("Тип транспортного засобу")
                 .HasConversion<string>();
 
@@ -52,14 +52,11 @@ namespace TarasDzivikPetProject.Domain.EntitiesConfiguration
                 .HasColumnName("Додано")
                 .HasDefaultValueSql("GETDATE()");
 
-            builder.Property(v => v.MetaTitle)
-                .HasColumnName("SEO Метатег Title");
-
-            builder.Property(v => v.MetaDescription)
-                .HasColumnName("SEO Метатег Description");
-
-            builder.Property(v => v.MetaKaywords)
-                .HasColumnName("SEO Метатег Keywords");
+            //builder.HasOne(v => v.Order)
+            //    .WithMany(o => o.Vehicle)
+            //    .HasForeignKey(v => v.CurrentOrderId)
+            //    .OnDelete(DeleteBehavior.Cascade);
+            
         }
     }
 }

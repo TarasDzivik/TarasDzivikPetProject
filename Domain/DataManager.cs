@@ -4,13 +4,13 @@ namespace TarasDzivikPetProject.Domain
 {
     public class DataManager    // Клас який централізовано керуватиме нашими репозиторіями
     {
-        public ICustomerRepository CustomerRepository { get; set; }
+        //public IOrderRepository OrderRepository { get; set; }
         public ITextFieldsRepository TextFields { get; set; }
         public IVehicleItemsRepository VehicleItems { get; set; }
 
-        public DataManager(ICustomerRepository customerRepository, ITextFieldsRepository textFieldsRepository, IVehicleItemsRepository vehicleItemsRepository)
+        public DataManager(/*IOrderRepository orderRepository,*/ ITextFieldsRepository textFieldsRepository, IVehicleItemsRepository vehicleItemsRepository)
         {
-            CustomerRepository = customerRepository;
+            //OrderRepository = orderRepository;
             TextFields = textFieldsRepository;
             VehicleItems = vehicleItemsRepository;
         }

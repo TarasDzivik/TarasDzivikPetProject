@@ -6,8 +6,8 @@ namespace TarasDzivikPetProject.Domain.Repositories.Abstract
     public interface IVehicleItemsRepository
     {
         IQueryable<VehicleItem> GetVehicleItem();
-        IOrderedEnumerable<VehicleItem> GetVehicleItemsByFuelType(string fuel);
-        IQueryable<VehicleItem> GetVehicleItemsByType(string type);
+        IQueryable<VehicleItem> GetVehicleItemsByFuelType(string fuel);
+        IQueryable<VehicleItem> GetVehicleItemsByCategory(string type);
         VehicleItem GetVehicleItemById(int id);
         void SaveVehicleItem(VehicleItem entity);
         void DeleteVehicleItem(int id);

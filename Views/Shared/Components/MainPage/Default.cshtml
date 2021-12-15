@@ -8,8 +8,8 @@
             @foreach (VehicleItem entity in Model)
             {
                 <li>
-                    <a asp-area="" asp-controller="Vehicle" asp-action="Index" asp-route-id="@entity.vehicleType">
-                        <img src="~/images/VehicleImages/@entity.TitleImagePath" alt="image" class="left"/>
+                    <a asp-area="" asp-controller="Vehicle" asp-action="Index" asp-route-id="@entity.VehicleId">
+                        <img src="~/images/VehicleImages/@entity.TitleImagePath" alt="image" class="image object"/>
                     </a>
                     <h4>
                         @entity.Name

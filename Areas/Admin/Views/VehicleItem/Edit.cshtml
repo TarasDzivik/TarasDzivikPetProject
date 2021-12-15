@@ -21,9 +21,9 @@
                 <span asp-validation-for="Title"></span>
             </div>
             <div class="div-box">
-                <label asp-for="vehicleType">Тип транспортного засобу</label>
-                <textarea asp-for="vehicleType"></textarea>
-                <span asp-validation-for="vehicleType"></span>
+                <label asp-for="VehicleType">Тип транспортного засобу</label>
+                <textarea asp-for="VehicleType"></textarea>
+                <span asp-validation-for="VehicleType"></span>
             </div>
             <div class="div-box">
                 <label asp-for="Name">Назва</label>
@@ -56,21 +56,6 @@
                 <div>
                     <img class="img-block" src="~/images/@Model.TitleImagePath" />
                 </div>
-            </div>
-            <div class="div-box">
-                <label asp-for="MetaTitle"></label>
-                <input asp-for="MetaTitle" />
-                <span asp-validation-for="MetaTitle"></span>
-            </div>
-            <div class="div-box">
-                <label asp-for="MetaDescription"></label>
-                <input asp-for="MetaDescription" />
-                <span asp-validation-for="MetaDescription"></span>
-            </div>
-            <div class="div-box">
-                <label asp-for="MetaKaywords"></label>
-                <input asp-for="MetaKaywords" />
-                <span asp-validation-for="MetaKaywords"></span>
             </div>
             <input type="submit" value="Сохранить" />
         </form>

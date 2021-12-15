@@ -29,7 +29,6 @@ namespace TarasDzivikPetProject.Domain.EntitiesConfiguration
             builder.Property(e=>e.DateAdded)
                 .ValueGeneratedOnAdd();
 
-
             builder.Property(e => e.MetaTitle)
                 .HasColumnName("SEO Метатег Title");
 
